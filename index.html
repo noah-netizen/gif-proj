@@ -1,5 +1,19 @@
+<body></body>
 <script>
-
-
-
+  
+  function createGif(x, y) {
+    const gif = document.createElement('img')
+      gif.src = 'cumsplosion.gif'
+      gif.style.position = 'absolute'
+      gif.style.top = y + 'px'
+      gif.style.left = x + 'px'
+      document.body.appendChild(gif)
+  }  
+  
+  for (let i = 0; i < 100; i++) {
+  	const x = i * 150
+    createGif(x, 0)
+  }
+  
+  document.body.style.backgroundColor = 'green'
 </script>
