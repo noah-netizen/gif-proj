@@ -1,19 +1,37 @@
-<body></body>
 <script>
-  
+  //INGREDIENTS
+  const gifWidth = 100
+  const gifHeight = 150
+  const gifOffsetX = 50
+  const gifOffsetY = -window.innerHeight * 0.10 //leaves space at top of page
+  const numColumns = window.innerWidth / gifWidth
+  const numRows = window.innerHeight / gifHeight * 0.5 //leaves space at bottom of page
+  const gifURL = 'cumsplosion.gif'
+
+  //INSTRUCTIONS
   function createGif(x, y) {
     const gif = document.createElement('img')
-      gif.src = 'cumsplosion.gif'
-      gif.style.position = 'absolute'
-      gif.style.top = y + 'px'
-      gif.style.left = x + 'px'
-      document.body.appendChild(gif)
-  }  
-  
-  for (let i = 0; i < 100; i++) {
-  	const x = i * 150
-    createGif(x, 0)
+    gif.src = gifURL + '#' + Math.random()
+    gif.style.position = 'absolute'
+    gif.style.top = y + 'px'
+    gif.style.left = x + 'px'
+    document.body.appendChild(gif)
   }
+
+  function setup() {
+    for (let r = 0; r < numRows; r++) {
+      for (let c = 0; c < numColumns; c++) {
+        const x = c * gifWidth - gifOffsetX
+        const y = r * gifHeight - gifOffsetY
+        createGif(x, y)
+      }
+    }
+    
+    document.body.style.backgroundColor = 'green'
+    document.body.style.overflow = 'hidden'
+  }
+
+  window.addEventListener('load', setup)
   
-  document.body.style.backgroundColor = 'green'
+  
 </script>
